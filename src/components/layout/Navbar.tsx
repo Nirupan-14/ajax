@@ -4,8 +4,9 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 
 const navLinks = [
-     { label: 'About',    href: '#about'    },
+    
     { label: 'Services', href: '#services' },
+     { label: 'About',    href: '#about'    },
     { label: 'Gallery',  href: '#gallery'  },
     { label: 'Pricing',  href: '#pricing'  },
     { label: 'Reviews',  href: '#reviews'  },
