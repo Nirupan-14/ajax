@@ -103,15 +103,25 @@ export default function HeroSection() {
                 /* ── Text column ── */
                 .h-text { display: flex; flex-direction: column; gap: 22px; }
 
+                /* ── EYEBROW — larger, bolder, glowing ── */
                 .h-eye {
-                    display: inline-flex; align-items: center; gap: 10px;
-                    font-family:'Courier New',monospace; font-size:10px;
-                    letter-spacing:.26em; text-transform:uppercase; color:var(--gold);
-                    opacity:0; transform:translateX(-18px);
-                    transition:opacity .6s ease .1s,transform .6s cubic-bezier(.22,1,.36,1) .1s;
+                    display: inline-flex; align-items: center; gap: 12px;
+                    font-family: 'Courier New', monospace;
+                    font-size: 13px;
+                    font-weight: 700;
+                    letter-spacing: .22em; text-transform: uppercase;
+                    color: var(--gold);
+                    text-shadow: 0 0 20px rgba(200,169,110,.6), 0 0 40px rgba(200,169,110,.25);
+                    opacity: 0; transform: translateX(-18px);
+                    transition: opacity .6s ease .1s, transform .6s cubic-bezier(.22,1,.36,1) .1s;
                 }
-                .h-eye.on { opacity:1; transform:translateX(0); }
-                .h-eye::before { content:''; width:28px; height:1px; background:var(--gold); flex-shrink:0; }
+                .h-eye.on { opacity: 1; transform: translateX(0); }
+                .h-eye::before {
+                    content: ''; width: 36px; height: 2px;
+                    background: var(--gold);
+                    box-shadow: 0 0 8px rgba(200,169,110,.7);
+                    flex-shrink: 0; border-radius: 1px;
+                }
 
                 .h-h1 {
                     margin:0;
@@ -178,7 +188,6 @@ export default function HeroSection() {
                     display:flex; align-items:center; justify-content:center;
                     opacity:0;
                     transition:opacity .9s ease .55s;
-                    /* transform managed inline for parallax */
                 }
                 .h-car-col.on { opacity:1; }
 
@@ -212,7 +221,6 @@ export default function HeroSection() {
                 .h-car-frame {
                     position:relative; width:100%; border-radius:4px;
                     overflow:hidden;
-                   
                     transition:box-shadow .3s ease;
                 }
                 .h-car-frame:hover {
@@ -221,16 +229,11 @@ export default function HeroSection() {
                         0 0 0 1px rgba(200,169,110,.28),
                         0 0 60px rgba(200,169,110,.1);
                 }
-                @keyframes carFloat {
-                    0%,100% { transform:translateY(0); }
-                    50%     { transform:translateY(-10px); }
-                }
                 .h-car-frame img {
                     display:block; width:100%; height:auto;
                     transition:transform .5s ease;
                 }
                 .h-car-frame:hover img { transform:scale(1.04); }
-                /* Shimmer on hover */
                 .h-car-frame::after {
                     content:''; position:absolute; inset:0; pointer-events:none;
                     background:linear-gradient(135deg,transparent 45%,rgba(200,169,110,.07));
@@ -255,43 +258,56 @@ export default function HeroSection() {
                 }
                 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
 
-                /* ── Stats bar ── */
+                /* ── Stats bar — bigger, clearer ── */
                 .h-stats {
-                    position:relative; z-index:10;
-                    background:rgba(6,6,6,.82); backdrop-filter:blur(16px);
-                    border-top:1px solid rgba(200,169,110,.18);
-                    opacity:0; transform:translateY(14px);
-                    transition:opacity .7s ease .9s,transform .7s cubic-bezier(.22,1,.36,1) .9s;
+                    position: relative; z-index: 10;
+                    background: rgba(6,6,6,.90);
+                    backdrop-filter: blur(20px);
+                    border-top: 1px solid rgba(200,169,110,.30);
+                    opacity: 0; transform: translateY(14px);
+                    transition: opacity .7s ease .9s, transform .7s cubic-bezier(.22,1,.36,1) .9s;
                 }
-                .h-stats.on { opacity:1; transform:translateY(0); }
+                .h-stats.on { opacity: 1; transform: translateY(0); }
                 .h-stats-inner {
-                    display:flex; overflow-x:auto; scrollbar-width:none;
-                    padding:0 clamp(24px,6vw,100px);
+                    display: flex; overflow-x: auto; scrollbar-width: none;
+                    padding: 0 clamp(24px,6vw,100px);
                 }
-                .h-stats-inner::-webkit-scrollbar { display:none; }
+                .h-stats-inner::-webkit-scrollbar { display: none; }
                 .h-stat {
-                    flex:1 0 auto; min-width:80px;
-                    display:flex; flex-direction:column; align-items:center; justify-content:center;
-                    gap:3px; padding:16px 18px; cursor:default;
-                    border-right:1px solid rgba(200,169,110,.1);
-                    position:relative; transition:background .2s ease;
+                    flex: 1 0 auto; min-width: 90px;
+                    display: flex; flex-direction: column; align-items: center; justify-content: center;
+                    gap: 5px; padding: 20px 22px; cursor: default;
+                    border-right: 1px solid rgba(200,169,110,.15);
+                    position: relative; transition: background .2s ease;
                 }
-                .h-stat:last-child { border-right:none; }
+                .h-stat:last-child { border-right: none; }
                 .h-stat::after {
-                    content:''; position:absolute; bottom:0; left:0;
-                    width:0; height:2px; background:var(--gold);
-                    transition:width .28s ease;
+                    content: ''; position: absolute; bottom: 0; left: 0;
+                    width: 0; height: 2px; background: var(--gold);
+                    transition: width .28s ease;
                 }
-                .h-stat:hover::after { width:100%; }
-                .h-stat:hover { background:rgba(200,169,110,.05); }
+                .h-stat:hover::after { width: 100%; }
+                .h-stat:hover { background: rgba(200,169,110,.07); }
+
+                /* ★ BIGGER stat numbers */
                 .h-stat strong {
-                    font-size:15px; font-weight:700; color:var(--gold);
-                    font-family:'Georgia',serif; letter-spacing:-.01em;
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: var(--gold);
+                    font-family: 'Georgia', serif;
+                    letter-spacing: -.01em;
+                    text-shadow: 0 0 16px rgba(200,169,110,.4);
+                    line-height: 1;
                 }
+
+                /* ★ BIGGER stat labels */
                 .h-stat span {
-                    font-family:'Courier New',monospace; font-size:10px;
-                    letter-spacing:.1em; text-transform:uppercase;
-                    color:rgba(245,240,232,.42);
+                    font-family: 'Courier New', monospace;
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: .12em;
+                    text-transform: uppercase;
+                    color: rgba(245,240,232,.70);
                 }
 
                 /* ── Scroll hint ── */
@@ -321,8 +337,10 @@ export default function HeroSection() {
                     .h-scroll { display:none; }
                 }
                 @media(max-width:520px) {
-                    .h-stat { padding:12px 10px; }
-                    .h-stat strong { font-size:13px; }
+                    .h-stat { padding: 14px 10px; }
+                    .h-stat strong { font-size: 17px; }
+                    .h-stat span { font-size: 10px; }
+                    .h-eye { font-size: 11px; }
                 }
             `}</style>
 
@@ -375,8 +393,6 @@ export default function HeroSection() {
                             transition: 'opacity .9s ease .55s, transform .12s ease-out',
                         }}
                     >
-                        
-
                         <div className="h-car-frame">
                             <Image
                                 src="/images/hero-2.png"
@@ -387,7 +403,6 @@ export default function HeroSection() {
                                 quality={92}
                                 style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
-                           
                         </div>
                     </div>
                 </div>
