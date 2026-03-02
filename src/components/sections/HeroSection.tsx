@@ -212,11 +212,7 @@ export default function HeroSection() {
                 .h-car-frame {
                     position:relative; width:100%; border-radius:4px;
                     overflow:hidden;
-                    box-shadow:
-                        0 28px 80px rgba(0,0,0,.78),
-                        0 0 0 1px rgba(200,169,110,.12),
-                        inset 0 1px 0 rgba(255,255,255,.05);
-                    animation:carFloat 6s ease-in-out infinite;
+                   
                     transition:box-shadow .3s ease;
                 }
                 .h-car-frame:hover {
@@ -379,26 +375,19 @@ export default function HeroSection() {
                             transition: 'opacity .9s ease .55s, transform .12s ease-out',
                         }}
                     >
-                        <div className="h-ring" />
-                        <div className="h-bk h-bk-tl" />
-                        <div className="h-bk h-bk-tr" />
-                        <div className="h-bk h-bk-bl" />
-                        <div className="h-bk h-bk-br" />
+                        
 
                         <div className="h-car-frame">
                             <Image
-                                src="/images/about/about-1.jpg"
-                                alt="Ceramic coated vehicle"
+                                src="/images/hero-2.png"
+                                alt="emoji"
                                 width={620}
                                 height={440}
                                 priority
                                 quality={92}
                                 style={{ width: '100%', height: 'auto', display: 'block' }}
                             />
-                            <div className="h-badge">
-                                <span className="h-dot" />
-                                Ceramic Coated · Ajax, ON
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
